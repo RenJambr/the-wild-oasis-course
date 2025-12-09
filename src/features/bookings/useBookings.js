@@ -35,12 +35,14 @@ export function useBookings() {
   //PRE-FETCHING
   const pageCount = Math.ceil(count / PAGE_SIZE);
 
+  // If current page is lower than max page count then prefetch next page bookings
   if (page < pageCount)
     queryClient.prefetchQuery({
       queryKey: ["bookings", filter, sortBy, page + 1],
       queryFn: () => getBookings({ filter, sortBy, page: page + 1 }),
     });
 
+  // If current page is greater than 1 then prefetch previous page bookings
   if (page > 1)
     queryClient.prefetchQuery({
       queryKey: ["bookings", filter, sortBy, page - 1],

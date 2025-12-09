@@ -3,6 +3,7 @@ import Filter from "../../ui/Filter";
 import TableOperations from "../../ui/TableOperations";
 import AddBooking from "./AddBooking";
 
+// Component for filter, sortBy and addBooking operations for booking table
 function BookingTableOperations() {
   return (
     <TableOperations>

@@ -24,13 +24,16 @@ import { useCreateBooking } from "./useCreateBooking";
 import FormRowFlex from "../../ui/FormRowFlex";
 
 function CreateBookingForm({ onCloseModal }) {
+  // Get guest info
   const { isOpenCreateGuestForm, currGuest, setCurrGuest } = useGuestContext();
+  // Get booking info
   const {
     isOpenBookingForm,
     closeBookingForm,
     selectedCabin,
     setSelectedCabin,
   } = useBookingFormContext();
+  // Fetch cabins
   const {
     cabins,
     isLoading: isLoadingCabins,
@@ -56,7 +59,6 @@ function CreateBookingForm({ onCloseModal }) {
     }
   }, [cabins, setSelectedCabin]);
 
-  //POKUŠAT RJEŠIT U JEDNU RUKU NEPOTREBAN EFFECT U DRUGU POTREBAN
   useEffect(() => {
     if (selectedCabin) {
       // Set the cabin price when the selected cabin is available on initial load
@@ -177,7 +179,6 @@ function CreateBookingForm({ onCloseModal }) {
 
   function onSubmit(data) {
     function handleBooking(guest) {
-      console.log(guest.id);
       const bookingData = {
         guestId: Array.isArray(guest) ? guest[0]?.id : guest?.id,
         ...data,
@@ -368,26 +369,6 @@ function CreateBookingForm({ onCloseModal }) {
       </FormRow>
     </Form>
   );
-
-  /* <div>
-        Add new guest or choose from the base
-        <div>Full name</div>
-        <div>Email</div>
-        <div>NationalId</div>
-        <div>Nationality</div>
-        <div>Country flag</div>
-      </div>
-      <div>Cabin ID</div>
-      <div>Cabin price</div>
-      <div>Start date</div>
-      <div>End date</div>
-      <div>Num nights</div>
-      <div>Num guests</div>
-      <div>Has breakfast</div>
-      <div>Is paid</div>
-      <div>Observations</div>
-      <div>Extras price</div>
-      <div>Total price</div> */
 }
 
 export default CreateBookingForm;

@@ -2,6 +2,7 @@ import Button from "../../ui/Button";
 import Modal from "../../ui/Modal";
 import CreateBookingForm from "./CreateBookingForm";
 
+// Modal for create a new booking
 function AddBooking() {
   return (
     <div>

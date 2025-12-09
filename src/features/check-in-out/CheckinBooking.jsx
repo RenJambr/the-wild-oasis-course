@@ -29,6 +29,7 @@ function CheckinBooking() {
   const { checkin, isCheckingIn } = useCheckin();
   const { settings, isLoading: isLoadingSettings } = useSettings();
   const [addBreakfast, setAddBreakfast] = useState(false);
+  // Custom hook for going back
   const moveBack = useMoveBack();
 
   const [confirmPaid, setConfirmPaid] = useState(false);

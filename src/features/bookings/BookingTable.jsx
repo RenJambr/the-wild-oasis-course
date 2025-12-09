@@ -6,6 +6,8 @@ import Spinner from "../../ui/Spinner";
 import Empty from "../../ui/Empty";
 import Pagination from "../../ui/Pagination";
 
+// BookingTable component for bookings page
+
 function BookingTable() {
   const { bookings, isLoading, count } = useBookings();
 
@@ -31,6 +33,7 @@ function BookingTable() {
           )}
         />
         <Table.Footer>
+          {/* Pagination for bookings. Count is number of bookings */}
           <Pagination count={count} />
         </Table.Footer>
       </Table>

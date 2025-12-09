@@ -2,6 +2,7 @@ import { createContext, useContext, useState } from "react";
 
 const GuestContext = createContext();
 
+// Guest context with functions for open and close form, check if form is open and set current guest
 function GuestProvider({ children }) {
   const [isOpenCreateGuestForm, setIsOpenCreateGuestForm] = useState(false);
   const [currGuest, setCurrGuest] = useState(null);

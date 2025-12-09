@@ -46,7 +46,7 @@ export async function getCurrentUser() {
 }
 
 export async function updateCurrentUser({ password, fullName, avatar }) {
-  // 1. Update password OR fullName
+  // 1. Update password or fullName
   let updateData;
   if (password) updateData = { password };
   if (fullName) updateData = { data: { fullName } };

@@ -32,6 +32,7 @@ export async function getBookings({ filter, sortBy, page }) {
       ascending: sortBy.direction === "asc",
     });
 
+  //PAGINATION
   if (page) {
     const from = (page - 1) * PAGE_SIZE;
     const to = from + PAGE_SIZE - 1;
@@ -134,7 +135,6 @@ export async function updateBooking(id, obj) {
 }
 
 export async function deleteBooking(id) {
-  // REMEMBER RLS POLICIES
   const { data, error } = await supabase.from("bookings").delete().eq("id", id);
 
   if (error) {

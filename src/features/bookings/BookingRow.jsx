@@ -80,6 +80,9 @@ function BookingRow({
       </Stacked>
 
       <Stacked>
+        {/*  If the guest's arrival date is today, return today.
+             Otherwise, calculate how many days remain until the arrival date
+             and return the appropriate message. */}
         <span>
           {isToday(new Date(startDate))
             ? "Today"
@@ -87,6 +90,7 @@ function BookingRow({
           &rarr; {numNights} night stay
         </span>
         <span>
+          {/* Showing arrival date and departure date */}
           {format(new Date(startDate), "MMM dd yyyy")} &mdash;{" "}
           {format(new Date(endDate), "MMM dd yyyy")}
         </span>
@@ -100,12 +104,14 @@ function BookingRow({
         <Menus.Toggle id={bookingId} />
         <Modal>
           <Menus.List id={bookingId}>
+            {/* Button for redirect user to the booking details page */}
             <Menus.Button
               icon={<HiEye />}
               onClick={() => navigate(`/bookings/${bookingId}`)}
             >
               See details
             </Menus.Button>
+            {/* In case if booking isn't confirmed then return button for check in */}
             {status === "unconfirmed" && (
               <Menus.Button
                 icon={<HiArrowDownOnSquare />}
@@ -114,6 +120,7 @@ function BookingRow({
                 Check in booking
               </Menus.Button>
             )}
+            {/* In case if booking is checked-in then return button for check out */}
             {status === "checked-in" && (
               <Menus.Button
                 icon={<HiArrowUpOnSquare />}
@@ -125,6 +132,7 @@ function BookingRow({
                 Check out booking
               </Menus.Button>
             )}
+            {/* Modal for delete booking that opens window for confirmation of deleting */}
             <Modal.Open>
               <Menus.Button icon={<HiTrash />}>Delete booking</Menus.Button>
             </Modal.Open>

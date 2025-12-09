@@ -50,6 +50,7 @@ function BookingDetail() {
       <Row type="horizontal">
         <HeadingGroup>
           <Heading as="h1">Booking #{bookingId}</Heading>
+          {/* Tag that is showing status of the booking and replace - with space in checked-in or checked-out status */}
           <Tag type={statusToTagName[status]}>{status.replace("-", " ")}</Tag>
         </HeadingGroup>
         <ButtonText onClick={moveBack}>&larr; Back</ButtonText>
@@ -58,6 +59,7 @@ function BookingDetail() {
       <BookingDataBox booking={booking} />
 
       <ButtonGroup>
+        {/* If status is unconfirmed return Check in button */}
         {status === "unconfirmed" && (
           <Button
             icon={<HiArrowDownOnSquare />}
@@ -66,6 +68,7 @@ function BookingDetail() {
             Check in booking
           </Button>
         )}
+        {/* If status is checked-in return Check out button */}
         {status === "checked-in" && (
           <Button
             icon={<HiArrowUpOnSquare />}
@@ -77,6 +80,7 @@ function BookingDetail() {
             Check out booking
           </Button>
         )}
+        {/* Button for delete booking */}
         <Button
           $variation="danger"
           icon={<HiTrash />}
